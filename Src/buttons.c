@@ -20,6 +20,7 @@ static ButtonCode ButtonDebrief(void)
 }
 
 /**
+  * @param enableMultipleButtonPresses = true - enable, false - disable
   * @retval Code of the pressed button
   */
 ButtonCode GetPressedButtonCode(bool enableMultipleButtonPresses)
