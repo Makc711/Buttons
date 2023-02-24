@@ -2,12 +2,10 @@
   ******************************************************************************
   * @file           : buttons.h
   * @author         : Rusanov M.N.
-  * @version        : V1.1.0
+  * @version        : V1.0.0
   * @date           : 17-February-2023
   * @brief          : Header for buttons.c file.
   *                   This file contains functions for working with the buttons.
-  *                   If you hold down the button for a long time, the button is
-  *                   pressed several times.
   *
   ******************************************************************************
   */
@@ -28,30 +26,11 @@ typedef enum {
 
 /* Exported defines ----------------------------------------------------------*/
 #define BUT_COUNT_THR   200 // contact bounce protection
-#define DELAY_BEFORE_LONG_PRESS  40000
-#define DELAY_BETWEEN_SLOW_PRESSES 10000
-#define DELAY_BETWEEN_FAST_PRESSES 5000
-#define NUMBER_OF_SLOW_PRESSES 3
-
-
-#if (DELAY_BEFORE_LONG_PRESS > 0xFFFF)
-#error "DELAY_BEFORE_LONG_PRESS is greater than the maximum allowed!"
-#endif
-#if ((DELAY_BEFORE_LONG_PRESS - DELAY_BETWEEN_SLOW_PRESSES) <= BUT_COUNT_THR)
-#error "DELAY_BETWEEN_SLOW_PRESSES is too much!"
-#endif
-#if (((DELAY_BEFORE_LONG_PRESS - DELAY_BETWEEN_FAST_PRESSES) <= BUT_COUNT_THR) || \
-  (DELAY_BETWEEN_FAST_PRESSES > DELAY_BETWEEN_SLOW_PRESSES))
-#error "DELAY_BETWEEN_FAST_PRESSES is too much!"
-#endif
-#if (NUMBER_OF_SLOW_PRESSES > 0xFF)
-#error "NUMBER_OF_SLOW_PRESSES is greater than the maximum allowed!"
-#endif
 
 /* Exported functions prototypes ---------------------------------------------*/
 /**
-  * @retval Code of the pressed button
-  */
+* @retval Code of the pressed button
+*/
 ButtonCode GetPressedButtonCode(void);
 
 #endif // _BUTTONS_H
