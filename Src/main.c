@@ -94,20 +94,22 @@ int main(void)
   MX_CRC_Init();
   MX_DMA2D_Init();
   /* USER CODE BEGIN 2 */
-  
+  bool enableMultipleButtonPresses = false;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (true)
   {
-    switch (GetPressedButtonCode())
+    switch (GetPressedButtonCode(enableMultipleButtonPresses))
     {
     case BT_1:
       HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+      enableMultipleButtonPresses = true;
       break;
     case BT_2:
       HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+      enableMultipleButtonPresses = false;
       break;
     case BT_3:
       HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);

@@ -22,7 +22,7 @@ static ButtonCode ButtonDebrief(void)
 /**
   * @retval Code of the pressed button
   */
-ButtonCode GetPressedButtonCode(void)
+ButtonCode GetPressedButtonCode(bool enableMultipleButtonPresses)
 {
   const ButtonCode buttonCode = ButtonDebrief();
   ButtonCode buttonCodeEnd = BT_NONE;
@@ -40,14 +40,17 @@ ButtonCode GetPressedButtonCode(void)
 
     if (pressCount > DELAY_BEFORE_LONG_PRESS) 
     {
-      const uint16_t delayBetweenPresses = (clickCount < NUMBER_OF_SLOW_PRESSES) ? 
-        DELAY_BETWEEN_SLOW_PRESSES : DELAY_BETWEEN_FAST_PRESSES;
-      pressCount = DELAY_BEFORE_LONG_PRESS - delayBetweenPresses;
-      buttonCodeEnd = buttonCode;
-      previousButtonCode = buttonCodeEnd;
-      if (clickCount < NUMBER_OF_SLOW_PRESSES)
+      if (enableMultipleButtonPresses)
       {
-        clickCount++;
+        const uint16_t delayBetweenPresses = (clickCount < NUMBER_OF_SLOW_PRESSES) ? 
+          DELAY_BETWEEN_SLOW_PRESSES : DELAY_BETWEEN_FAST_PRESSES;
+        pressCount = DELAY_BEFORE_LONG_PRESS - delayBetweenPresses;
+        buttonCodeEnd = buttonCode;
+        previousButtonCode = buttonCodeEnd;
+        if (clickCount < NUMBER_OF_SLOW_PRESSES)
+        {
+          clickCount++;
+        }
       }
     }
     else

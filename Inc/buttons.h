@@ -16,6 +16,9 @@
 #ifndef _BUTTONS_H
 #define _BUTTONS_H
 
+/* Includes ------------------------------------------------------------------*/
+#include <stdbool.h>
+
 /* Exported types ------------------------------------------------------------*/
 typedef enum {
   BT_NONE = 0,
@@ -50,8 +53,9 @@ typedef enum {
 
 /* Exported functions prototypes ---------------------------------------------*/
 /**
+  * @param enableMultipleButtonPresses = true - enable, false - disable
   * @retval Code of the pressed button
   */
-ButtonCode GetPressedButtonCode(void);
+ButtonCode GetPressedButtonCode(bool enableMultipleButtonPresses);
 
 #endif // _BUTTONS_H
