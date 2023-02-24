@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file           : buttons.h
   * @author         : Rusanov M.N.
-  * @version        : V1.1.0
+  * @version        : V1.1.1
   * @date           : 17-February-2023
   * @brief          : Header for buttons.c file.
   *                   This file contains functions for working with the buttons.
