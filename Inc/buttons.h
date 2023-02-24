@@ -3,7 +3,7 @@
   * @file           : buttons.h
   * @author         : Rusanov M.N.
   * @version        : V1.1.1
-  * @date           : 17-February-2023
+  * @date           : 24-February-2023
   * @brief          : Header for buttons.c file.
   *                   This file contains functions for working with the buttons.
   *                   If you hold down the button for a long time, the button is
